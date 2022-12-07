@@ -70,6 +70,22 @@ def difficulty_selection():
     [{red}5{reset}] Exit
   """)
 
+def declare_winner():
+  if mine.mines == mine.flags:
+    for f in mine.flags:
+      # winner winner chicken dinner
+      os.system("clear")
+      print("You Win!")
+      time.sleep(2)
+      os.system("clear")
+      print_slow(f"""\n\n\n\n       Winner Winner...""", 0.05)
+      time.sleep(2)
+      print_slow(f"""\n\n\n\n             Chicken Dinner!""", 0.05)
+      time.sleep(2)
+      os.system("clear")
+      begin()
+
+
 SYM_COLOR = {
   '0': Fore.BLACK,
   '1': Fore.BLUE,

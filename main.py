@@ -20,6 +20,7 @@ def main():
   disp.time.sleep(1)
   disp.os.system('clear')
 
+  # Repeat entire game
   while True:
 
     size = disp.begin()
@@ -27,25 +28,18 @@ def main():
     player_won: bool = False  # If they won or lost
     game_over: bool = status == 1  # If game is over
 
+    # Initialize first grid
     mine.init_grid(size)
     mine.print_field(mine.visible, vis=True)
 
-    # 0. init vars                         - DONE
-    # 1. display empty field               - DONE
-    # 2. get user input                    - DONE
-    # 3. use the user input as safe zone   - DONE
-    # 4. generate field                    - DONE
-    # 5. refresh field                     - DONE
-    # 6. continue game                     - 
-    # 7. process commands                  - 
-
-    # Check input validity
+    # Validate Input
     while True:
       user_input = input(f'\nSelect a Cell (or flag/unflag)\n{disp.bright}> {disp.reset}')
       print(disp.normal)
       if (cmd := mine.get_cmd(user_input,size)) != 'ERR':
         break
 
+    # Build Safezone
     mine.safe_zone = [cmd["cell"]]
     mine.build_grid(size)
     

@@ -93,7 +93,7 @@ def uncover_cell(cell: tuple):
   print("\n\n\n\n\n")
   print_field(visible)
   return 0
-  
+
 # Flags a cell
 def flag_cell(cell: tuple):
   targeted = visible[cell[1]][cell[0]]
@@ -101,20 +101,8 @@ def flag_cell(cell: tuple):
   if targeted == SYMBOLS['empty']:
     visible[cell[1]][cell[0]] = SYMBOLS['flag']
     flags.add(cell)
-    print(flags,mines)
-    if mines == flags:
-      for f in flags:
-        # winner winner chicken dinner
-          os.system("clear")
-          print("You Win!")
-          time.sleep(2)
-          os.system("clear")
-          print_slow(f"""\n\n\n\n       Winner Winner...""", 0.05)
-          time.sleep(2)
-          print_slow(f"""\n\n\n\n             Chicken Dinner!""", 0.05)
-          time.sleep(2)
-          os.system("clear")
-          disp.begin()
+
+    disp.cmp_flags_mines()
     
     return 0
   else:
