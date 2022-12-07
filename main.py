@@ -28,7 +28,7 @@ def main():
     game_over: bool = status == 1  # If game is over
 
     mine.init_grid(size)
-    mine.print_field(mine.visible)
+    mine.print_field(mine.visible, vis=True)
 
     # 0. init vars                         - DONE
     # 1. display empty field               - DONE

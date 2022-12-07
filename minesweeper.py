@@ -18,7 +18,7 @@ field = []  # Not-Displayed Field
 visible = []  # Displayed Field
 first_click = True
 safe_zone = []  # Zone of zeros around user's first click
-MINE_CHANCE = 25  # Number of possible outcomes where a mine is only 1 (eg. MINE_CHANCE=6 means a mine has a 1/6 chance)
+MINE_CHANCE = 4  # Number of possible outcomes where a mine is only 1 (eg. MINE_CHANCE=6 means a mine has a 1/6 chance)
 mines = set([])  # List of mine locations
 flags = set([]) # List of flag locations
 
@@ -256,11 +256,14 @@ def build_grid(size_l: int) -> None:
   print_field(field)
   print()
 
-  print_field(visible)
+  print_field(visible, vis=True)
 
-# Adds color to string
-def add_color(st):
-  disp.NUM_COLOR.get(st, FORE.WHITE)
+# Format Number
+def format_num(st):
+  if st == '0':
+    return ' '
+  else:
+    return disp.SYM_COLOR.get(st, disp.white) + st + disp.reset
   
 # Prints the field
 def print_field(field: list, *, vis=False):
@@ -271,7 +274,7 @@ def print_field(field: list, *, vis=False):
     
     print(f'{i + 1}. ', end="")
     
-    if vis:
+    if vis: 
       print(*[add_color(c.strip()) for c in r], sep=" ")
     else:
       print(*[c.strip() for c in r], sep=" ")
@@ -280,7 +283,7 @@ def print_field(field: list, *, vis=False):
 # Reprints edited field to the user
 def refresh_field() -> None:
   os.system("clear")
-  print_field(field, vis=True)
+  print_field(field)
   print_field(visible, vis=True)
 
 

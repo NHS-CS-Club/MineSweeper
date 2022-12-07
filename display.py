@@ -29,7 +29,6 @@ def print_slow(str, delay):
         sys.stdout.flush()
         time.sleep(delay)
 
-
 # Returns size of field
 def begin() -> int:
   difficulty_selection()
@@ -71,15 +70,15 @@ def difficulty_selection():
     [{red}5{reset}] Exit
   """)
 
-NUM_COLOR = {
-  '0': Fore.WHITE,
-  '1': Fore.LIGHTGREEN_EX,
+SYM_COLOR = {
+  '0': Fore.BLACK,
+  '1': Fore.BLUE,
   '2': Fore.GREEN,
-  '3': Fore.CYAN,
-  '4': Fore.BLUE,
+  '3': Fore.RED,
+  '4': Fore.LIGHTBLUE_EX,
   '5': Fore.YELLOW,
-  '6': Fore.RED,
+  '6': Fore.CYAN,
   '7': Fore.LIGHTMAGENTA_EX,
   '8': Fore.MAGENTA,
-  '9': Fore.MAGENTA
+  '⚑': Fore.RED
 }
