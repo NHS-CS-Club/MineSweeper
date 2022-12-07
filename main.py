@@ -14,11 +14,11 @@ TODO
 
 
 def main():
-  # disp.print_slow('Initializing...\n\n', 0.1)
-  # disp.time.sleep(2)
-  # disp.print_slow('Please use full screen.', 0.1)
-  # disp.time.sleep(1)
-  # disp.os.system('clear')
+  disp.print_slow('Initializing...\n\n', 0.1)
+  disp.time.sleep(2)
+  disp.print_slow('Please use full screen.', 0.1)
+  disp.time.sleep(1)
+  disp.os.system('clear')
 
   while True:
 
@@ -75,7 +75,7 @@ def main():
       return 0
 
 if __name__ == '__main__':
-  os.system('python --version')
+  # os.system('python --version')
 
   main()
   disp.end_game()

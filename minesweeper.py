@@ -48,6 +48,10 @@ BOUNDS_ERR = f'''
 {disp.dim}Enter a number and letter that are in the board's bounds{disp.normal}
 '''.strip()
 
+TOO_MANY_FLAGS = f'''
+{disp.dim}Uh Oh! Looks like you have too many flags!{disp.normal}
+'''
+
 
 # Checks if cell can be uncovered
 def uncoverable(cell: tuple) -> bool:
@@ -77,7 +81,7 @@ def uncover_cell(cell: tuple):
   if field[cell[1]][cell[0]] == SYMBOLS['flag']:
     os.system("clear")
     print("Cannot uncover a flag!\n")
-    print_field(field)
+    # print_field(field)
     print("\n\n\n\n\n")
     print_field(visible)
     return -1
@@ -85,7 +89,7 @@ def uncover_cell(cell: tuple):
 
   visible[cell[1]][cell[0]] = field[cell[1]][cell[0]]
   uncover_linked(cell)
-  print_field(field)
+  # print_field(field)
   print("\n\n\n\n\n")
   print_field(visible)
   return 0
@@ -253,12 +257,11 @@ def build_grid(size_l: int) -> None:
   #   visible[cell[1]][cell[0]] = SYMBOLS["zero"]
 
   os.system("clear")
-  print_field(field)
   print()
 
   print_field(visible, vis=True)
 
-# Format Number
+# Formats numbers to be displayed
 def format_num(st):
   if st == '0':
     return ' '
@@ -275,7 +278,7 @@ def print_field(field: list, *, vis=False):
     print(f'{i + 1}. ', end="")
     
     if vis: 
-      print(*[add_color(c.strip()) for c in r], sep=" ")
+      print(*[format_num(c.strip()) for c in r], sep=" ")
     else:
       print(*[c.strip() for c in r], sep=" ")
 
@@ -283,7 +286,6 @@ def print_field(field: list, *, vis=False):
 # Reprints edited field to the user
 def refresh_field() -> None:
   os.system("clear")
-  print_field(field)
   print_field(visible, vis=True)
 
 
